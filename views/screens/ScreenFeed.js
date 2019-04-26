@@ -1,33 +1,27 @@
 import React, {Component} from 'react';
 import { FlatList, Text , View, Button} from 'react-native';
-//import Utility from '../Utility';
 
+//import Utility from '../Utility';
 // import Oeuvre from '../../models/Oeuvre.js'
 // import OeuvreThumbnail from '../OeuvreThumbnail';
 
 class Feed extends Component
 {
-  /*
-    constructor(props)
+    /*constructor(props)
     {
         super(props)
         this.state = {posts : []}
         this.getOeuvreDataFromDB();
-    }
-*/
-// Setting up profile activity title.
-
+    }*/
 
     render()
     {
-
-      //  <Text style = {styles.TextComponentStyle}> { this.props.navigation.state.params.Email } </Text>
-
-      let view =
-      <View>
-       <Text> Looping post coming soon </Text>
+        //  <Text style = {styles.TextComponentStyle}> { this.props.navigation.state.params.Email } </Text>
+        let view =
+        <View>
+            <Text> Looping post coming soon </Text>
           
-       </View>
+        </View>
         return view;
 
         /*
@@ -48,8 +42,7 @@ class Feed extends Component
         }
         */
     }
-/*
-    getOeuvreDataFromDB()
+    /*getOeuvreDataFromDB()
     {
         console.log(`Fetching server for Feed.`)
         fetch(`http://${Utility.DATABASE_URL}posts/list`,
@@ -86,7 +79,6 @@ class Feed extends Component
             ret[key] = oeuvreData[key];
         }
         return ret;
-    }
-    */
+    }*/
 }
 export default Feed;

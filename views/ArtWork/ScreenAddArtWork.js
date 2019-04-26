@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 
-class AddArtWork extends Component {
-
-    constructor(props) {
-
+class AddArtWork extends Component 
+{
+    constructor(props) 
+    {
         super(props)
 
         /** Declare used variable */
@@ -19,7 +19,9 @@ class AddArtWork extends Component {
             ArtWork_type: '',
         }
     }
-    render() {
+
+    render() 
+    {
         let view =
             <View style={styles.templateContainer}>
                 <Text> Time to Create !</Text>
@@ -94,27 +96,26 @@ class AddArtWork extends Component {
 
 
 const styles = StyleSheet.create(
+{
+    templateContainer:
     {
-        templateContainer:
-        {
-            fontSize: 20,
-        },
-        TextInputStyleClass: {
+        fontSize: 20,
+    },
+    TextInputStyleClass: {
 
-            textAlign: 'center',
-            marginBottom: 7,
-            height: 40,
-            borderWidth: 1,
-            // Set border Hex Color Code Here.
-            borderColor: '#2196F3',
+        textAlign: 'center',
+        marginBottom: 7,
+        height: 40,
+        borderWidth: 1,
+        // Set border Hex Color Code Here.
+        borderColor: '#2196F3',
 
-            // Set border Radius.
-            borderRadius: 5,
+        // Set border Radius.
+        borderRadius: 5,
 
-            // Set border Radius.
-            //borderRadius: 10 ,
-        }
+        // Set border Radius.
+        //borderRadius: 10 ,
     }
-);
+});
 
 export default AddArtWork;
