@@ -16,10 +16,9 @@ class Template extends Component
 export default Template;
 
 const styles = StyleSheet.create(
+{
+    templateContainer : 
     {
-        templateContainer : 
-        {
-            fontSize : 20,
-        }
+        fontSize : 20,
     }
-);
+});

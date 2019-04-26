@@ -45,7 +45,7 @@ class ArtWorkDetail extends Component
             <View style={styles.artisteTopOfScreen}>
                 /* Artist Thumbnail*/
                 <Image
-                  source={uri : data.author.url_profil_img}
+                  source={{uri : data.author.url_profil_img}}
                 />
                 /* Artist Name*/
                 <Text style={styles.artistNameLink}> `${data.author.name}` </Text>
@@ -96,8 +96,7 @@ class ArtWorkDetail extends Component
             </View>*/
         </View>;
         return view;
-
-
+    }
 }
 
 export default ArtWorkDetail;

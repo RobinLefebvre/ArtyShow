@@ -19,9 +19,6 @@ class DrawerMenu extends Component
                 <ImageBackground source={require('../assets/MockUserImage.png')} style={{flex: 1, width: 280, justifyContent: 'center'}} >
                     <Text style={styles.headerText}>The_Robs </Text>
                     <Text style={styles.headerText}> { this.props.navigation.state.params.Email } </Text>
-
-
-
                 </ImageBackground>
             </View>
             <View style={styles.screenContainer}>
@@ -38,7 +35,8 @@ class DrawerMenu extends Component
 }
 export default DrawerMenu;
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create(
+{
     // Side navigation
       container: {
           alignItems: 'center',
@@ -64,5 +62,4 @@ const styles = StyleSheet.create({
           fontSize: 25,
           marginLeft: 20
       },
-
-  });
+});

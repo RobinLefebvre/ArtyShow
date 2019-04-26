@@ -1,10 +1,8 @@
-import React, {Component} from 'react';
-import { createAppContainer, createDrawerNavigator } from 'react-navigation';
+/** Drawer menu is the left drawer, which contains the User information and navigation  */
+import { createDrawerNavigator } from 'react-navigation';
 
 import DrawerMenu from '../views/MenuDrawer'
 import BottomNav from '../controllers/BottomNav'
-
-
 
 const AppDrawerNavigator = createDrawerNavigator(
 {
