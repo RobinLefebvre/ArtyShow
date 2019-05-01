@@ -19,7 +19,7 @@ class Feed extends Component
         //  <Text style = {styles.TextComponentStyle}> { this.props.navigation.state.params.Email } </Text>
         let view =
         <View>
-            <Text> Looping post coming soon </Text>
+            <Text> Because i'm a nuby </Text>
 
         </View>
         return view;
