@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Button, Alert } from 'react-native';
-
-
-
+import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import Utility from '../../Utility'
 
 class ScreenLogin extends Component 
 {
@@ -17,50 +15,47 @@ class ScreenLogin extends Component
 
         this.state = 
         {
-            UserEmail: '',
-            UserPassword: ''
+            user : 
+            {
+                name : "",
+                mail : "",
+                pass : ""
+            }
         }
     }
 
     UserLoginFunction = () => 
     {
-
-        const { UserEmail } = this.state;
-        const { UserPassword } = this.state;
-
-
-        fetch('http://infinity-demo.ovh/user_login.php', {
+        const { user } = this.state;
+        let requestAdress = 'users/login'
+        fetch(`${Utility.DATABASE_URL}${requestAdress}`, 
+        {
             method: 'POST',
-            headers: {
+            headers: 
+            {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-
-                email: UserEmail,
-
-                password: UserPassword
-
+                mail: user.mail,
+                pass: user.pass
             })
-
         })
         .then((response) => response.json())
         .then((responseJson) => 
         {
-            // If server response message same as Data Matched
-            if (responseJson === 'Data Matched')
+            if (responseJson.error === undefined)
             {
-                //Then open Profile activity and send user email to profile activity.
-                //this.props.navigation.navigate('Dashboard');
-                this.props.navigation.navigate('Dashboard', { Email: UserEmail });
+                this.setState({user : responseJson})
+                this.props.navigation.navigate('Dashboard', { name: responseJson.name, mail : responseJson.mail, imageURL : 'user_template.png' });
             }
             else 
             {
-                Alert.alert(responseJson);
+                Alert.alert(responseJson.error);
             }
 
         })
-        .catch((error) => { console.error(error); });
+        .catch((error) => { console.error(error) })
     }
 
     render() 
@@ -69,34 +64,31 @@ class ScreenLogin extends Component
         <View style={styles.MainContainer}>
             <Text style={styles.TextComponentStyle}>User Login Form</Text>
             <TextInput
-                // Adding hint in Text Input using Place holder.
                 placeholder="Enter User Email"
-                onChangeText={UserEmail => this.setState({ UserEmail })}
-                // Making the Under line Transparent.
+                onChangeText={text => this.setState({ user : {mail : text, pass : this.state.user.pass} })}
                 underlineColorAndroid='transparent'
                 style={styles.TextInputStyleClass}
             />
 
             <TextInput
-                // Adding hint in Text Input using Place holder.
                 placeholder="Enter User Password"
-                onChangeText={UserPassword => this.setState({ UserPassword })}
-                // Making the Under line Transparent.
+                onChangeText={text => this.setState({ user : {mail : this.state.user.mail, pass : text} })}
                 underlineColorAndroid='transparent'
                 style={styles.TextInputStyleClass}
                 secureTextEntry={true}
             />
 
             <Button title="Click Here To Login" onPress={this.UserLoginFunction} color="#2196F3" />
+            <Text></Text>
+            <Button title="Return" onPress={() => this.props.navigation.navigate('Welcome')} color="#2196F3" />
+
         </View>
 
         return view;
     }
 }
-
 export default ScreenLogin;
 
-import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create(
 {
     MainContainer: 
@@ -112,10 +104,7 @@ const styles = StyleSheet.create(
         marginBottom: 7,
         height: 40,
         borderWidth: 1,
-        // Set border Hex Color Code Here.
         borderColor: '#2196F3',
-
-        // Set border Radius.
         borderRadius: 5,
     },
     

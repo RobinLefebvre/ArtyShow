@@ -28,13 +28,12 @@ class WelcomeScreen extends Component
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create(
+{
+    templateContainer :
     {
-        templateContainer :
-        {
-            fontSize : 20,
-        }
+        fontSize : 20,
     }
-);
+});
 
 
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Button, Image } from 'react-native';
+import { ImagePicker } from 'expo';
 
 class AddArtWork extends Component 
 {
@@ -10,6 +11,7 @@ class AddArtWork extends Component
         /** Declare used variable */
         this.state =
         {
+            image : null,
             ArtWork_title: '',
             ArtWork_description: '',
             ArtWork_date_creation: '',
@@ -22,76 +24,87 @@ class AddArtWork extends Component
 
     render() 
     {
-        let view =
-            <View style={styles.templateContainer}>
-                <Text> Time to Create !</Text>
+        let { image } = this.state;
 
+        let view =
+            (<View style={styles.templateContainer}>
+                
+                <Button
+                    title="Pick an image."
+                    onPress={this._pickImage}
+                />
+
+                {image && 
+                <Image source={{ uri: image }} style={{ width: 200, height: 200 }} /> }
+
+
+                <Text> ArtWork Data </Text>
                 <TextInput
-                    // Adding hint in Text Input using Place holder.
                     placeholder="ArtWork Title"
                     onChangeText={text => this.setState({ ArtWork_title : text })}
-                    // Making the Under line Transparent.
                     underlineColorAndroid='transparent'
                     style={styles.TextInputStyleClass}
                 />
 
                 <TextInput
-                    // Adding hint in Text Input using Place holder.
                     placeholder="ArtWork Date Creation"
                     onChangeText={text => this.setState({ ArtWork_date_creation : text })}
-                    // Making the Under line Transparent.
                     underlineColorAndroid='transparent'
                     style={styles.TextInputStyleClass}
                 />
 
                 <TextInput
-                    // Adding hint in Text Input using Place holder.
                     placeholder="Art Work Description"
                     onChangeText={text => this.setState({ ArtWork_description : text })}
-                    // Making the Under line Transparent.
                     underlineColorAndroid='transparent'
                     style={styles.TextInputStyleClass}
                 />
 
                 <TextInput
-                    // Adding hint in Text Input using Place holder.
                     placeholder="Art Work Characteristic"
                     onChangeText={text => this.setState({ ArtWork_characteristics : text })}
                     underlineColorAndroid='transparent'
                     style={styles.TextInputStyleClass}
                 />
 
-
                 <TextInput
-                    // Adding hint in Text Input using Place holder.
                     placeholder="ArtWor kTags Tabs"
                     onChangeText={text => this.setState({ ArtWork_tags : text })}
-                    // Making the Under line Transparent.
                     underlineColorAndroid='transparent'
                     style={styles.TextInputStyleClass}
                 />
 
-
                 <TextInput
-                    // Adding hint in Text Input using Place holder.
                     placeholder="Art Work Price"
                     onChangeText={text => this.setState({ ArtWork_price : text })}
                     underlineColorAndroid='transparent'
                     style={styles.TextInputStyleClass}
                 />
-
                 <TextInput
-                    // Adding hint in Text Input using Place holder.
                     placeholder="Art Work type"
                     onChangeText={text => this.setState({ ArtWork_type : text })}
                     underlineColorAndroid='transparent'
                     style={styles.TextInputStyleClass}
                 />
-
-            </View> // end main view
+            </View>) // end main view
 
         return view;
     }
+
+    _pickImage = async () => 
+    {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            allowsEditing: true,
+            aspect: [4, 3],
+        });
+   
+        console.log(result);
+   
+        if (!result.cancelled) 
+        {
+            this.setState({ image: result.uri });
+        }
+   };
 }
 
 

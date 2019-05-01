@@ -12,13 +12,16 @@ class DrawerMenu extends Component
         this.props.navigation.dispatch(navigateAction);
     })
 
-    render() {
+    render() 
+    {
+        let imageUser = `http://riad.ovh:6660/${this.props.navigation.state.params.imageURL}`;
+
         let view =
         <View style={styles.container}>
             <View style={styles.headerContainer}>
-                <ImageBackground source={require('../assets/MockUserImage.png')} style={{flex: 1, width: 280, justifyContent: 'center'}} >
-                    <Text style={styles.headerText}>The_Robs </Text>
-                    <Text style={styles.headerText}> { this.props.navigation.state.params.Email } </Text>
+                <ImageBackground source={{uri : imageUser}} style={{flex: 1, width: 280, justifyContent: 'center'}} >
+                    <Text style={styles.headerText}> { this.props.navigation.state.params.name }</Text>
+                    <Text style={styles.headerText}> { this.props.navigation.state.params.mail } </Text>
                 </ImageBackground>
             </View>
             <View style={styles.screenContainer}>

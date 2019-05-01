@@ -12,7 +12,7 @@ const AppDrawerNavigator = createDrawerNavigator(
     }
 },
 {
-  contentComponent: DrawerMenu
+    contentComponent: DrawerMenu
 });
 
 

@@ -1,30 +1,19 @@
 import React, {Component} from 'react';
-import { FlatList, Text , View, Button} from 'react-native';
-
-//import Utility from '../Utility';
-// import Oeuvre from '../../models/Oeuvre.js'
-// import OeuvreThumbnail from '../OeuvreThumbnail';
+import { FlatList, Text } from 'react-native';
+import Artwork from '../../models/Artworks'
+import Utility from '../../Utility'
 
 class Feed extends Component
 {
-    /*constructor(props)
+    constructor(props)
     {
         super(props)
         this.state = {posts : []}
         this.getOeuvreDataFromDB();
-    }*/
+    }
 
     render()
     {
-        //  <Text style = {styles.TextComponentStyle}> { this.props.navigation.state.params.Email } </Text>
-        let view =
-        <View>
-            <Text> Looping post coming soon </Text>
-          
-        </View>
-        return view;
-
-        /*
         if(this.state.posts.length == 0)
         {
             return <Text> There are no Posts. </Text>
@@ -40,32 +29,35 @@ class Feed extends Component
                 />
             return view;
         }
-        */
+        
     }
-    /*getOeuvreDataFromDB()
+    getOeuvreDataFromDB()
     {
-        console.log(`Fetching server for Feed.`)
-        fetch(`http://${Utility.DATABASE_URL}posts/list`,
+        let requestAdress = 'feed/list'
+        fetch(`http://${Utility.DATABASE_URL}${requestAdress}`,
         {
-            method: 'GET',
+            method: 'POST',
             headers: new Headers(),
             credentials: "same-origin",
             mode: 'cors',
+            body : JSON.stringify({})
         })
-        .catch((error) => console.log(error))
         .then((data) => data.json())
         .then((data) =>
         {
+            console.log(data);
             this.setState({posts : data});
             console.log(`Received data from server, Screen Feed has Oeuvres.`)
         })
+        .catch((error) => console.log(error))
+
     }
 
     writeOeuvre(oeuvreData)
     {
         let postData = this.parsePostData(oeuvreData);
         console.log(postData);
-        let p = new Oeuvre(postData);
+        let p = new Artwork(postData);
         let view = <OeuvreThumbnail post={p} />
 
         return view;
@@ -79,6 +71,6 @@ class Feed extends Component
             ret[key] = oeuvreData[key];
         }
         return ret;
-    }*/
+    }
 }
 export default Feed;

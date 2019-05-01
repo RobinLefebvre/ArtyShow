@@ -1,46 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Picker, Button } from 'react-native';
-
-
-
-import { AppRegistry, StyleSheet, Alert, } from 'react-native';
-
-
-
-const styles = StyleSheet.create(
-{
-    MainContainer: 
-    {
-        justifyContent: 'center',
-        flex: 1,
-        margin: 10
-    },
-
-    TextInputStyleClass: 
-    {
-        textAlign: 'center',
-        marginBottom: 7,
-        height: 40,
-        borderWidth: 1,
-        // Set border Hex Color Code Here.
-        borderColor: '#2196F3',
-
-        // Set border Radius.
-        borderRadius: 5,
-        // Set border Radius.
-        //borderRadius: 10 ,
-    }
-});
-
-
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import Utility from '../../Utility';
 
 class ScreenRegister extends Component 
 {
-    // Setting up profile activity title.
     static navigationOptions =
     {
-            title: 'Register',
-
+        title: 'Register',
     };
 
     constructor(props) 
@@ -60,8 +26,9 @@ class ScreenRegister extends Component
         const { UserName } = this.state;
         const { UserMail } = this.state;
         const { UserPassword } = this.state;
-
-        fetch('http://infinity-demo.ovh/user_registration.php', 
+        
+        let requestAdress = 'users/register'
+        fetch(`${Utility.DATABASE_URL}${requestAdress}`, 
         {
             method: 'POST',
             headers: 
@@ -70,22 +37,15 @@ class ScreenRegister extends Component
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                // return jsondata  to user_registration.php
                 name: UserName,
-                email: UserMail,
-                password: UserPassword
+                mail: UserMail,
+                pass: UserPassword
             })
         })
         .then((response) => response.json())
-        .then((responseJson) => 
-        {
-            // Showing response message coming from server after inserting records.
-            Alert.alert(responseJson);
-
-        })
-        .catch((error) => {console.error(error);});
+        .then((response) => console.log(response))
+        .catch((error) => console.error(error));
     }
-
 
     render() 
     {
@@ -96,34 +56,32 @@ class ScreenRegister extends Component
             <Text style={{ fontSize: 20, color: "#000", textAlign: 'center', marginBottom: 15 }}>User Registration Form</Text>
 
             <TextInput
-                // Adding hint in Text Input using Place holder.
                 placeholder="Enter User Name"
                 onChangeText={UserName => this.setState({ UserName })}
-                // Making the Under line Transparent.
                 underlineColorAndroid='transparent'
                 style={styles.TextInputStyleClass}
             />
 
             <TextInput
-                // Adding hint in Text Input using Place holder.
                 placeholder="Enter User Email"
                 onChangeText={UserMail => this.setState({ UserMail })}
-                // Making the Under line Transparent.
                 underlineColorAndroid='transparent'
                 style={styles.TextInputStyleClass}
             />
 
             <TextInput
-                // Adding hint in Text Input using Place holder.
                 placeholder="Enter User Password"
                 onChangeText={UserPassword => this.setState({ UserPassword })}
-                // Making the Under line Transparent.
                 underlineColorAndroid='transparent'
                 style={styles.TextInputStyleClass}
                 secureTextEntry={true}
             />
 
-            <Button title="Click Here To Register" onPress={() => this.UserRegistrationFunction()} color="#2196F3" />
+            <Button 
+                title="Click Here To Register" 
+                onPress={() => this.UserRegistrationFunction()} 
+                color="#2196F3" 
+            />
 
             <Text> </Text>
 
@@ -137,5 +95,27 @@ class ScreenRegister extends Component
     }
 }
 
-AppRegistry.registerComponent('CreateUser', () => CreateUser);
 export default ScreenRegister;
+
+const styles = StyleSheet.create(
+{
+    MainContainer: 
+    {
+        justifyContent: 'center',
+        flex: 1,
+        margin: 10
+    },
+
+    TextInputStyleClass: 
+    {
+        textAlign: 'center',
+        marginBottom: 7,
+        height: 40,
+        borderWidth: 1,
+        borderColor: '#2196F3',
+
+        borderRadius: 5,
+        //borderRadius: 10 ,
+    }
+});
+    

@@ -16,6 +16,7 @@ const AppSwitchNavigator = createSwitchNavigator(
     LoginAction:  { screen: ScreenLogin  },
     Dashboard: { screen: AppDrawerNavigator },
 });
+
 const AppContainer = createAppContainer(AppSwitchNavigator);
 
 
