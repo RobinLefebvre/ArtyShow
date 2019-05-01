@@ -19,16 +19,4 @@ const AppSwitchNavigator = createSwitchNavigator(
 );
 
 
-const AppContainer = createAppContainer(AppSwitchNavigator);
-
-
-// export default createAppContainer(LoginNav);
-class  WelcomeScreenNav extends Component
-{
-    render()
-    {
-        return <AppContainer />;
-    }
-}
-
-export default  WelcomeScreenNav;
+export default createAppContainer(AppSwitchNavigator) 
