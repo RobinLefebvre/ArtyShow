@@ -9,14 +9,14 @@ import { AppRegistry, StyleSheet, Alert, } from 'react-native';
 
 const styles = StyleSheet.create(
 {
-    MainContainer: 
+    MainContainer:
     {
         justifyContent: 'center',
         flex: 1,
         margin: 10
     },
 
-    TextInputStyleClass: 
+    TextInputStyleClass:
     {
         textAlign: 'center',
         marginBottom: 7,
@@ -34,7 +34,7 @@ const styles = StyleSheet.create(
 
 
 
-class ScreenRegister extends Component 
+class ScreenRegister extends Component
 {
     // Setting up profile activity title.
     static navigationOptions =
@@ -43,11 +43,11 @@ class ScreenRegister extends Component
 
     };
 
-    constructor(props) 
+    constructor(props)
     {
         super(props)
 
-        this.state = 
+        this.state =
         {
             UserName: '',
             UserMail: '',
@@ -55,16 +55,16 @@ class ScreenRegister extends Component
         }
     }
 
-    UserRegistrationFunction = () => 
+    UserRegistrationFunction = () =>
     {
         const { UserName } = this.state;
         const { UserMail } = this.state;
         const { UserPassword } = this.state;
 
-        fetch('http://infinity-demo.ovh/user_registration.php', 
+        fetch('http://infinity-demo.ovh/user_registration.php',
         {
             method: 'POST',
-            headers: 
+            headers:
             {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ class ScreenRegister extends Component
             })
         })
         .then((response) => response.json())
-        .then((responseJson) => 
+        .then((responseJson) =>
         {
             // Showing response message coming from server after inserting records.
             Alert.alert(responseJson);
@@ -87,7 +87,7 @@ class ScreenRegister extends Component
     }
 
 
-    render() 
+    render()
     {
         const { goBack } = this.props.navigation;
         let view =

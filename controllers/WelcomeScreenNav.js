@@ -1,29 +1,34 @@
-/** ?? COMMENTS ?? */
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import React, {Component} from 'react';
+import {  createSwitchNavigator, createAppContainer } from 'react-navigation';
 
-import ScreenLogin from '../views/ScreenLogin';
-import ScreenRegister from '../views/ScreenRegister';
-import WelcomeScreenContent from '../views/ScreenWelcome';
+/** Import requiered  Screen */
+import WelcomeScreen from '../views/screens/ScreenWelcome'
+import ScreenLogin from '../views/screens/ScreenLogin';
+import ScreenRegister from '../views/screens/ScreenRegister';
 
-const WelcomeScreenNav = createStackNavigator(
+/**  AppDrawerNavigator - Drawer navigation  allows access to Account Screens and the Bottom Nav */
+import  AppDrawerNavigator from '../controllers/DrawerNav';
+
+const AppSwitchNavigator = createSwitchNavigator(
 {
-    Login :
+    Welcome: { screen: WelcomeScreen },
+    SignUp : {screen: ScreenRegister},
+    LoginAction:  { screen: ScreenLogin  },
+    Dashboard: { screen: AppDrawerNavigator },
+}
+);
+
+
+const AppContainer = createAppContainer(AppSwitchNavigator);
+
+
+// export default createAppContainer(LoginNav);
+class  WelcomeScreenNav extends Component
+{
+    render()
     {
-        screen : ScreenLogin,
-        navigationOptions: ({ navigation }) => ({
-            title: `Login`,
-        }),
-    },
-    Register:
-    {
-        screen: ScreenRegister,
-        navigationOptions: ({ navigation }) => ({
-            title: `Register`,
-        }),
+        return <AppContainer />;
     }
-},
-{
-    contentComponent:  WelcomeScreenContent
-});
+}
 
-export default createAppContainer(WelcomeScreenNav);
+export default  WelcomeScreenNav;

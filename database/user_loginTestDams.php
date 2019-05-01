@@ -15,33 +15,27 @@ $email = $obj['email'];
 // Populate Password from JSON $obj array and store into $password.
 $password = $obj['password'];
 
-if (empty($email) || empty($password )) {
-    echo 'error';
-  }
-
 //Applying User Login query with email and password match.
-$Sql_CheckUserRegistration = "select * from UserRegistrationTable where user_mail = '$email' and user_password = '$password' ";
+$Sql_Query = "select * from UserRegistrationTable where user_mail = '$email' and user_password = '$password' ";
 
 // Executing SQL Query.
-$check = mysqli_fetch_array(mysqli_query($con,$Sql_CheckUserRegistration));
+$check = mysqli_fetch_array(mysqli_query($con,$Sql_Query));
 
 
 if(isset($check)){
-
-
-  $sqlGetCurrentUser = "SELECT user_id, user_name, user_mail FROM UserRegistrationTable   ";
-
-
-
-
 
  $SuccessLoginMsg = 'Data Matched';
 
  // Converting the message into JSON format.
 $SuccessLoginJson = json_encode($SuccessLoginMsg);
 
+
+
+
+
 // Echo the message.
  echo $SuccessLoginJson ;
+
 
  }
 

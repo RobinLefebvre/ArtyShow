@@ -4,25 +4,25 @@ import { View, Text, TextInput, TouchableOpacity, Button, Alert } from 'react-na
 
 
 
-class ScreenLogin extends Component 
+class ScreenLogin extends Component
 {
     static navigationOptions =
     {
         title: 'LoginActivity',
     };
 
-    constructor(props) 
+    constructor(props)
     {
         super(props)
 
-        this.state = 
+        this.state =
         {
             UserEmail: '',
             UserPassword: ''
         }
     }
 
-    UserLoginFunction = () => 
+    UserLoginFunction = () =>
     {
 
         const { UserEmail } = this.state;
@@ -45,7 +45,7 @@ class ScreenLogin extends Component
 
         })
         .then((response) => response.json())
-        .then((responseJson) => 
+        .then((responseJson) =>
         {
             // If server response message same as Data Matched
             if (responseJson === 'Data Matched')
@@ -54,7 +54,7 @@ class ScreenLogin extends Component
                 //this.props.navigation.navigate('Dashboard');
                 this.props.navigation.navigate('Dashboard', { Email: UserEmail });
             }
-            else 
+            else
             {
                 Alert.alert(responseJson);
             }
@@ -63,7 +63,7 @@ class ScreenLogin extends Component
         .catch((error) => { console.error(error); });
     }
 
-    render() 
+    render()
     {
         let view =
         <View style={styles.MainContainer}>
@@ -99,14 +99,14 @@ export default ScreenLogin;
 import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create(
 {
-    MainContainer: 
+    MainContainer:
     {
         justifyContent: 'center',
         flex: 1,
         margin: 10,
     },
 
-    TextInputStyleClass: 
+    TextInputStyleClass:
     {
         textAlign: 'center',
         marginBottom: 7,
@@ -118,8 +118,8 @@ const styles = StyleSheet.create(
         // Set border Radius.
         borderRadius: 5,
     },
-    
-    TextComponentStyle: 
+
+    TextComponentStyle:
     {
         fontSize: 20,
         color: "#000",

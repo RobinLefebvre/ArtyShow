@@ -20,7 +20,7 @@ class Feed extends Component
         let view =
         <View>
             <Text> Looping post coming soon </Text>
-          
+
         </View>
         return view;
 

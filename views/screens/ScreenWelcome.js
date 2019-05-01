@@ -15,8 +15,8 @@ class WelcomeScreen extends Component
           />
           <Button title="Sign Up"
           onPress={() => this.props.navigation.navigate('SignUp')} />
-
         
+
         </View>
 
         return view;

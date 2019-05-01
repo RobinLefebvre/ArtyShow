@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 10460,
-  "expoServerNgrokUrl": "https://us-guv.anonymous.artyshow.exp.direct",
-  "packagerNgrokUrl": "https://packager.us-guv.anonymous.artyshow.exp.direct",
-  "ngrokPid": 11284
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }

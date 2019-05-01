@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavigationActions } from 'react-navigation';
-import { Text, View, StyleSheet, ImageBackground } from 'react-native'
+import { Text, View, StyleSheet, ImageBackground , Image} from 'react-native'
 
 class DrawerMenu extends Component
 {
@@ -17,8 +17,14 @@ class DrawerMenu extends Component
         <View style={styles.container}>
             <View style={styles.headerContainer}>
                 <ImageBackground source={require('../assets/MockUserImage.png')} style={{flex: 1, width: 280, justifyContent: 'center'}} >
-                    <Text style={styles.headerText}>The_Robs </Text>
-                    <Text style={styles.headerText}> { this.props.navigation.state.params.Email } </Text>
+
+                <Image
+                  style={{width: 66, height: 58}}
+                  source={{uri: './assets/imgDemo/round-profile-pic.png'}}
+                  />
+
+
+                  <Text style={styles.headerText}> { this.props.navigation.state.params.Email } </Text>
                 </ImageBackground>
             </View>
             <View style={styles.screenContainer}>

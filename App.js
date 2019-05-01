@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
 
-import MainNav from './controllers/MainNav';
-import LoginNav from './controllers/LoginNav';
 
-
-import WelcomeScreen from './views/screens/ScreenWelcome';
+// Importing nav between Login and  register
+import WelcomeScreenNav from './controllers/WelcomeScreenNav';
 
 
 class App extends Component
@@ -16,7 +14,7 @@ class App extends Component
 
       let view =
       <View style={{flex:1,marginTop : 20}}>
-          <LoginNav/>
+          <WelcomeScreenNav/>
       </View>
       return view;
 
